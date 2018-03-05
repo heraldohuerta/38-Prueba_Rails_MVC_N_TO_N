@@ -1,0 +1,48 @@
+<%= form_with(model: list, local: true) do |form| %>
+  <% if list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+      <ul>
+      <% list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre, id: :list_nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :titulo %>
+    <%= form.text_field :titulo, id: :list_titulo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :detalle %>
+    <%= form.text_field :detalle, id: :list_detalle %>
+  </div>
+
+
+  <div class="form-group">
+    <%= form.label :url, "URL Imagen", class: "control-label" %> <br/>
+    <div>
+      <%= image_tag(list.url.thumb, style: "margin-bottom: 10px; border-radius: 5px;") if list.url? %>
+      <%= form.text_field :remote_url_url, id: :history_picture, class: "form-control" %>
+    </div>
+    <%= form.hidden_field :url_cache %>
+  </div>
+
+
+  <!-- <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url, id: :list_url %>
+  </div> -->
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<h1>Lists</h1>
+<div class="row">
+<% @lists.each do |list| %>
+<div class="col">
+  <div class="card" style="width: 18rem;">
+    <a href="<%= list_detalle_path(list.id) %>">
+    <%= image_tag list.url, class:"card-img-top", alt:"imagen" %>
+    </a>
+    <div class="card-body">
+      <p class="card-text"><%= list.titulo %></p>
+    </div>
+    <% if miestado(list.id) %>
+        <%= link_to 'No Listo',  list_listo_path(list.id,'0'),class:'btn btn-danger' %>
+    <% else %>
+      <%= link_to 'Listo',     list_listo_path(list.id,'1'),class:'btn btn-primary'%>
+    <%   end %>
+  </div>
+</div>
+<% end %>
+</div>

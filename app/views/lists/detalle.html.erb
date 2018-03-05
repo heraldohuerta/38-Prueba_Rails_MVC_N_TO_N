@@ -1,0 +1,48 @@
+<h1 class="text-center text-red">Los siguientes usuarios han completado la actividad</h1>
+
+
+<h1>Raking de los primeros 5</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Fecha de Termino Tarea</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @five.each do |list| %>
+      <tr>
+        <td><%= list.user.name %></td>
+        <td><%= list.user.email %></td>
+        <td><%= image_tag list.user.url %></td>
+        <td><%= list.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<h1>Todos los que han finalizado</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Imagen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @userlistos.each do |list| %>
+      <tr>
+        <td><%= list.user.name %></td>
+        <td><%= list.user.email %></td>
+        <td><%= image_tag list.user.url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
